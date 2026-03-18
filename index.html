@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandra Martins · Fisioterapia Dermatofuncional</title>
+  <meta name="description" content="Fisioterapia Dermatofuncional especializada em reabilitação pós-cirurgia plástica, ao domicílio na Margem Sul e Lisboa. Alexandra Martins, Fisioterapeuta." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── VARIÁVEIS ─────────────────────────────────────────── */
+    :root {
+      --verde-escuro:   #3F5C4E;
+      --verde-sage:     #8FA79A;
+      --creme:          #F6F4EF;
+      --quase-preto:    #2B2B2B;
+      --creme-quente:   #FFF0DB;
+      --terracota:      #BA8E7A;
+      --verde-medio:    #66796B;
+      --terracota-claro:#D7A184;
+      --font-serif:     'Playfair Display', Georgia, serif;
+      --font-sans:      'Inter', system-ui, sans-serif;
+      --radius:         12px;
+      --transition:     0.3s ease;
+    }
+
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--quase-preto);
+      background: var(--creme);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TIPOGRAFIA ─────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.25; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+    p  { font-size: 1rem; color: #4a4a4a; }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── UTILITÁRIOS ────────────────────────────────────────── */
+    .container {
+      width: min(1160px, 92vw);
+      margin-inline: auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--verde-escuro);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--verde-medio); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.7);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+    .btn-terracota {
+      background: var(--terracota);
+      color: #fff;
+    }
+    .btn-terracota:hover { background: #a57a6a; transform: translateY(-2px); }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(246,244,239,0.97);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-logo img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .nav-logo-text .nome {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      transition: color var(--transition);
+    }
+    .nav-logo-text .especialidade {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.75);
+      transition: color var(--transition);
+    }
+    #navbar.scrolled .nav-logo-text .nome { color: var(--verde-escuro); }
+    #navbar.scrolled .nav-logo-text .especialidade { color: var(--verde-sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--terracota-claro);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    #navbar.scrolled .nav-links a { color: var(--quase-preto); }
+    #navbar.scrolled .nav-links a:hover { color: var(--verde-escuro); }
+
+    .nav-cta {
+      background: var(--terracota);
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 500 !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: #a57a6a; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all var(--transition);
+    }
+    #navbar.scrolled .nav-toggle span { background: var(--quase-preto); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Fundo4.png');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    #hero:hover .hero-bg { transform: scale(1.0); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(25,42,32,0.88) 0%,
+        rgba(50,75,60,0.78) 55%,
+        rgba(25,42,32,0.70) 100%
+      );
+    }
+    .hero-logo-deco {
+      position: absolute;
+      right: 4%;
+      bottom: 0;
+      z-index: 1;
+      width: clamp(340px, 46vw, 660px);
+      opacity: 0.22;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-block: 8rem 4rem;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag svg { width: 14px; height: 14px; }
+    .hero-content h1 {
+      color: #fff;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--terracota-claro);
+    }
+    .hero-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin-bottom: 2.25rem;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── STATS BAR ──────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--verde-escuro);
+      padding: 1.5rem 0;
+    }
+    .stats-phrase {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .stats-phrase .phrase-icon {
+      width: 28px; height: 28px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+    .stats-phrase p {
+      font-family: var(--font-serif);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.5;
+      max-width: 700px;
+    }
+
+    /* ─── CIRURGIAS ──────────────────────────────────────────── */
+    #cirurgias { background: var(--creme); }
+    .cirurgias-box {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      box-shadow: 0 4px 32px rgba(63,92,78,0.08);
+      border-top: 4px solid var(--verde-sage);
+    }
+    .cirurgias-box ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.9rem 2.5rem;
+    }
+    .cirurgias-box ul li {
+      font-size: 0.92rem;
+      color: var(--quase-preto);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      line-height: 1.5;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(143,167,154,0.2);
+    }
+    .cirurgias-box ul li::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--terracota);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.42rem;
+    }
+
+    /* ─── SECÇÕES GENÉRICAS ──────────────────────────────────── */
+    section { padding: 6rem 0; }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header h2 { color: var(--verde-escuro); }
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--terracota);
+      margin-top: 1rem;
+      border-radius: 2px;
+    }
+
+    /* ─── SOBRE MIM ──────────────────────────────────────────── */
+    #sobre { background: var(--creme-quente); }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .sobre-img-wrap {
+      position: relative;
+    }
+    .sobre-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(63,92,78,0.18);
+    }
+    .sobre-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--terracota);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .sobre-badge .big { font-family: var(--font-serif); font-size: 2rem; display: block; }
+    .sobre-badge .small { font-size: 0.72rem; letter-spacing: 0.06em; opacity: 0.9; }
+    .sobre-text h2 { color: var(--verde-escuro); margin-bottom: 1.25rem; }
+    .sobre-text p { margin-bottom: 1rem; }
+    .sobre-text .destaque {
+      background: rgba(143,167,154,0.15);
+      border-left: 3px solid var(--verde-sage);
+      padding: 1rem 1.2rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--verde-escuro);
+    }
+    .formacao-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+    .formacao-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .formacao-item .dot {
+      width: 8px; height: 8px;
+      background: var(--terracota);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    /* ─── SERVIÇOS ───────────────────────────────────────────── */
+    #servicos { background: var(--creme); }
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+    .servico-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .servico-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(63,92,78,0.14);
+    }
+    .servico-card-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    .servico-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .servico-card:hover .servico-card-img img { transform: scale(1.06); }
+    .servico-card-body { padding: 1.5rem; }
+    .servico-icon {
+      width: 44px; height: 44px;
+      background: var(--creme-quente);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .servico-icon svg { width: 22px; height: 22px; color: var(--verde-escuro); }
+    .servico-card h3 { color: var(--verde-escuro); margin-bottom: 0.5rem; }
+    .servico-card p { font-size: 0.9rem; }
+
+    /* ─── PORQUE ─────────────────────────────────────────────── */
+    #porque {
+      background: var(--verde-escuro);
+      position: relative;
+      overflow: hidden;
+    }
+    #porque::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('jean-philippe-delberghe-75xPHEQBmvA-unsplash.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+    }
+    .porque-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .porque-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+    .porque-img img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+    .porque-text .section-label { color: var(--terracota-claro); }
+    .porque-text h2 { color: #fff; margin-bottom: 1.5rem; }
+    .porque-text p { color: rgba(255,255,255,0.78); margin-bottom: 1rem; }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .beneficio-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      backdrop-filter: blur(4px);
+    }
+    .beneficio-item .beneficio-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .beneficio-item h4 {
+      color: var(--terracota-claro);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .beneficio-item p { color: rgba(255,255,255,0.65); font-size: 0.82rem; }
+
+    /* ─── BLOG ───────────────────────────────────────────────── */
+    #blog { background: var(--creme-quente); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(63,92,78,0.13);
+    }
+    .blog-card-img {
+      height: 240px;
+      overflow: hidden;
+    }
+    .blog-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+    .blog-card-body { padding: 1.75rem; }
+    .blog-tag {
+      display: inline-block;
+      background: rgba(143,167,154,0.2);
+      color: var(--verde-escuro);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.9rem;
+    }
+    .blog-card h3 { color: var(--verde-escuro); margin-bottom: 0.6rem; font-size: 1.15rem; }
+    .blog-card p { font-size: 0.9rem; margin-bottom: 1.25rem; }
+    .blog-card .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--terracota);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: gap var(--transition);
+    }
+    .blog-card .read-more:hover { gap: 0.7rem; }
+    .blog-card .read-more svg { width: 16px; height: 16px; }
+
+    /* ─── BLOG BREVEMENTE ───────────────────────────────────── */
+    .blog-brevemente {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      position: relative;
+    }
+    .blog-deco-logo {
+      height: 90px;
+      width: auto;
+      opacity: 0.12;
+      margin: 0 auto 1.5rem;
+    }
+    .blog-brevemente-text {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-style: italic;
+      color: var(--verde-escuro);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .blog-brevemente-sub {
+      font-size: 1rem;
+      color: var(--verde-sage);
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    /* ─── CONTACTO ───────────────────────────────────────────── */
+    #contacto { background: var(--creme); }
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contacto-info h2 { color: var(--verde-escuro); margin-bottom: 1rem; }
+    .contacto-info > p { margin-bottom: 2rem; }
+    .contacto-items { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contacto-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contacto-item-icon {
+      width: 48px; height: 48px;
+      background: var(--creme-quente);
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contacto-item-icon svg { width: 22px; height: 22px; color: var(--verde-escuro); }
+    .contacto-item-text .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      margin-bottom: 0.15rem;
+    }
+    .contacto-item-text .value {
+      font-size: 0.95rem;
+      color: var(--quase-preto);
+    }
+    .contacto-item-text a { transition: color var(--transition); }
+    .contacto-item-text a:hover { color: var(--verde-escuro); }
+
+    .whatsapp-card {
+      background: var(--verde-escuro);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      color: #fff;
+    }
+    .whatsapp-card h3 {
+      color: #fff;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+    .whatsapp-card p { color: rgba(255,255,255,0.75); margin-bottom: 1.75rem; }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: #25D366;
+      color: #fff;
+      padding: 0.9rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+    .whatsapp-btn:hover {
+      background: #1db954;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+    }
+    .whatsapp-btn svg { width: 22px; height: 22px; }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      margin-top: 1rem;
+      transition: all var(--transition);
+    }
+    .email-btn:hover { background: rgba(255,255,255,0.18); }
+    .email-btn svg { width: 18px; height: 18px; }
+    .zona-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.5rem;
+    }
+    .zona-chip svg { width: 14px; height: 14px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--quase-preto);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .footer-brand img {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+    .footer-brand-text .nome {
+      font-family: var(--font-serif);
+      color: rgba(255,255,255,0.88);
+      font-size: 0.95rem;
+    }
+    .footer-brand-text .esp {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      text-align: right;
+    }
+    .footer-logo-mao {
+      height: 110px;
+      width: auto;
+      opacity: 0.75;
+      filter: invert(1);
+      mix-blend-mode: screen;
+      border-radius: 0 !important;
+    }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 30px; height: 30px; }
+    .wa-tooltip {
+      position: absolute;
+      right: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--quase-preto);
+      color: #fff;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ─── RESPONSIVO ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sobre-grid,
+      .porque-grid,
+      .contacto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sobre-badge { right: 0; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(246,244,239,0.98); padding: 1.5rem; gap: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: var(--quase-preto) !important; }
+      .nav-toggle { display: flex; }
+      .beneficios-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 0; }
+      .hero-btns { flex-direction: column; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="perfil%20instagram.png" alt="Alexandra Martins" />
+        <div class="nav-logo-text">
+          <span class="nome">Alexandra Martins</span>
+          <span class="especialidade">Fisioterapia Dermatofuncional</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre">Sobre mim</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#cirurgias">Cirurgias</a></li>
+        <li><a href="#porque">Porquê?</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contacto" class="nav-cta">Marcar consulta</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        Margem Sul · Lisboa · Domicílio
+      </div>
+
+      <h1>A sua recuperação<br />começa <em>em casa</em></h1>
+
+      <p>Fisioterapia Dermatofuncional especializada na reabilitação pós-cirurgia plástica. Cuido de si com rigor científico, conforto e atenção personalizada — sem sair de casa.</p>
+
+      <div class="hero-btns">
+        <a href="https://wa.me/351913386242?text=Olá%20Alexandra%2C%20gostaria%20de%20marcar%20uma%20consulta." class="btn btn-terracota" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.524 5.847L0 24l6.335-1.498A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.667-.494-5.204-1.357l-.374-.218-3.86.913.928-3.762-.24-.385A9.944 9.944 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+          </svg>
+          Marcar no WhatsApp
+        </a>
+        <a href="#servicos" class="btn btn-outline">
+          Conhecer os serviços
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logotipo mão decorativo no hero -->
+  <img src="logo-mao-claro.png" class="hero-logo-deco" alt="" aria-hidden="true" />
+
+  <div class="hero-scroll">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-phrase">
+      <svg class="phrase-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(215,161,132,0.9)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+      <p>Acompanhamento presencial e online contínuo e sempre articulado com a sua equipa cirúrgica</p>
+      <svg class="phrase-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(215,161,132,0.9)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SOBRE MIM
+════════════════════════════════════════════════════════════ -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+
+      <div class="sobre-img-wrap">
+        <img src="foto-alexandra.jpg" alt="Alexandra Martins, Fisioterapeuta" />
+        <div class="sobre-badge">
+          <span class="big">A.M.</span>
+          <span class="small">Fisioterapeuta</span>
+        </div>
+      </div>
+
+      <div class="sobre-text">
+        <p class="section-label">Sobre mim</p>
+        <h2>Cuidado especializado, <em>no conforto da sua casa</em></h2>
+
+        <div class="destaque">
+          "O pós-operatório de uma cirurgia plástica é um período que pode determinar o sucesso de todo o esforço e empenho colocado na cirurgia. Dê-lhe a importância que merece."
+        </div>
+
+        <p>Sou a Alexandra Martins, fisioterapeuta especializada em Fisioterapia Dermatofuncional, com foco na reabilitação pós-operatória de cirurgia plástica. Combinando rigor científico com um acompanhamento próximo e personalizado, levo os cuidados que precisa diretamente até si.</p>
+
+        <p>Ao iniciar tratamentos ao domicílio na Margem Sul e em Lisboa, o meu objetivo é simples: garantir que cada paciente recupera no ambiente onde se sente mais confortável, com a qualidade de tratamento que merece.</p>
+
+        <div class="formacao-list">
+          <p class="section-label" style="margin-bottom:0.5rem;">Formação & Especialização</p>
+          <div class="formacao-item">
+            <div class="dot"></div>
+            <span>Licenciatura em Fisioterapia</span>
+          </div>
+          <div class="formacao-item">
+            <div class="dot"></div>
+            <span>Especialização em Fisioterapia Dermatofuncional</span>
+          </div>
+          <div class="formacao-item">
+            <div class="dot"></div>
+            <span>Certificação em Tratamento de Fibrose Pós-Operatória (Fibrose Zero)</span>
+          </div>
+          <div class="formacao-item">
+            <div class="dot"></div>
+            <span>Formação avançada em Drenagem Linfática Manual</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SERVIÇOS
+════════════════════════════════════════════════════════════ -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Serviços</p>
+      <h2>O que posso fazer <br />por si</h2>
+      <div class="divider"></div>
+      <p style="max-width:520px;margin-top:1rem;">Protocolos de reabilitação personalizados, baseados em evidência científica, aplicados no conforto do seu domicílio.</p>
+    </div>
+
+    <div class="servicos-grid">
+
+      <div class="servico-card">
+        <div class="servico-card-img">
+          <img src="Sistema%20linfático1.jpeg" alt="Drenagem Linfática Manual" />
+        </div>
+        <div class="servico-card-body">
+          <div class="servico-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3>Drenagem Linfática Manual</h3>
+          <p>Apoiar e facilitar o sistema linfático é o objetivo da drenagem, sempre com manobras específicas e pensadas na lesão que a rede linfática sofre com a cirurgia. É considerada uma das maiores armas que a fisioterapia traz desde o primeiro dia após a cirurgia.</p>
+        </div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-card-img">
+          <img src="download%20(3).jpeg" alt="Terapia Miofascial" />
+        </div>
+        <div class="servico-card-body">
+          <div class="servico-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+            </svg>
+          </div>
+          <h3>Terapia Miofascial</h3>
+          <p>Combino técnicas de trabalho de modulação do tecido conjuntivo e fascial com mais evidência científica para o tratamento de fibroses e cicatrizes, melhorando o contorno e a textura da pele.</p>
+        </div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-card-img" style="filter: saturate(0.6) brightness(0.92);">
+          <img src="Massage1.jpg" alt="Massagem do Tecido Conjuntivo" />
+        </div>
+        <div class="servico-card-body">
+          <div class="servico-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
+            </svg>
+          </div>
+          <h3>Massagem do Tecido Conjuntivo</h3>
+          <p>Sempre adequado ao desconforto do paciente de modo a promover relaxamento de zonas fora da área de cirurgia que estão comprometidas ou "doridas". Promove relaxamento.</p>
+        </div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-card-img" style="filter: saturate(0.45) sepia(0.2) brightness(0.88);">
+          <img src="Bandas%20Neuromusculares%20-%20kinesiotaping.jpg" alt="Bandagens Neuromusculares / Kinesiotaping" />
+        </div>
+        <div class="servico-card-body">
+          <div class="servico-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3>Bandagens Neuromusculares / Kinesiotaping</h3>
+          <p>Recurso muito poderoso que ajuda a acelerar a recuperação e é usado para prevenir e tratar complicações como seroma e fibrose.</p>
+        </div>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-card-img">
+          <img src="Mão.jpg" alt="Ensino e Aconselhamento" />
+        </div>
+        <div class="servico-card-body">
+          <div class="servico-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <h3>Ensino e Aconselhamento</h3>
+          <p>Sempre contínuo e iniciado ainda na preparação para a cirurgia até às últimas fases pós-operatórias. Desde ensino postural, atividades do dia a dia, uso correto da roupa compressiva, até ao aconselhamento de produtos dermocosméticos adequados para cada situação e etapa.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PORQUE
+════════════════════════════════════════════════════════════ -->
+<section id="porque">
+  <div class="container">
+    <div class="porque-grid">
+
+      <div class="porque-img">
+        <img src="ChatGPT%20Image%20Mar%2010%2C%202026%2C%2003_27_28%20PM.png" alt="Sistema Linfático" />
+      </div>
+
+      <div class="porque-text">
+        <p class="section-label">Evidência científica</p>
+        <h2>Porquê a Fisioterapia Dermatofuncional?</h2>
+
+        <p>Revisões científicas recentes (2023–2024) confirmam: a fisioterapia dermatofuncional é parte essencial da recuperação pós-cirúrgica. 93% dos cirurgiões plásticos já recomendam o acompanhamento fisioterapêutico como parte do plano pós-operatório.</p>
+
+        <p>Os estudos mostram resultados concretos — redução de complicações, cicatrização mais rápida e melhor resultado estético final. Não é um extra. É parte integrante do processo.</p>
+
+        <div class="beneficios-grid">
+          <div class="beneficio-item">
+            <div class="beneficio-icon">🩹</div>
+            <h4>Cicatrização</h4>
+            <p>Acelera as fases inflamatória, proliferativa e de remodelação.</p>
+          </div>
+          <div class="beneficio-item">
+            <div class="beneficio-icon">💧</div>
+            <h4>Redução de Edema</h4>
+            <p>Diminui inchaço, hematomas e seromas nas primeiras semanas.</p>
+          </div>
+          <div class="beneficio-item">
+            <div class="beneficio-icon">🔬</div>
+            <h4>Anti-Fibrose</h4>
+            <p>Previne e trata nódulos fibróticos pós-lipoaspiração.</p>
+          </div>
+          <div class="beneficio-item">
+            <div class="beneficio-icon">✨</div>
+            <h4>Resultado Estético</h4>
+            <p>Contorno corporal mais uniforme e previsível.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CIRURGIAS
+════════════════════════════════════════════════════════════ -->
+<section id="cirurgias">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Área de atuação</p>
+      <h2>Reabilitação em cirurgias<br />de corpo e face</h2>
+      <div class="divider"></div>
+      <p style="max-width:560px;margin-top:1rem;">Trabalho com pacientes em recuperação de uma vasta gama de cirurgias plásticas corporais e faciais, sempre com protocolo adaptado a cada procedimento.</p>
+    </div>
+
+    <div class="cirurgias-box">
+      <ul>
+        <li>Abdominoplastia, Mini-abdominoplastia e Abdominoplastia com lipoaspiração</li>
+        <li>Lipoaspiração, Lipovaser, Lipoaspiração de alta definição (HD), Lipoescultura</li>
+        <li>Aumento mamário, Mastopexia (lifting mamário), Redução mamária, Substituição de próteses, Reconstrução mamária</li>
+        <li>Braquioplastia (lifting de braços), Cruroplastia (lifting de coxas), BodyLift e LipoBodyLift, Gluteoplastia</li>
+        <li>Mommy Makeover</li>
+        <li>Ritidectomia (lifting de rosto), DeepPlane Facelift, Neck Lift (lifting de pescoço), Blefaroplastia superior e inferior</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOG
+════════════════════════════════════════════════════════════ -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Blog</p>
+      <h2>Informação que <em>faz diferença</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="blog-brevemente">
+      <img src="logo-mao.png" class="blog-deco-logo" alt="" aria-hidden="true" />
+      <p class="blog-brevemente-text">Brevemente</p>
+      <p class="blog-brevemente-sub">Artigos sobre recuperação pós-operatória, técnicas e evidência científica — em preparação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACTO
+════════════════════════════════════════════════════════════ -->
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+
+      <div class="contacto-info">
+        <p class="section-label">Contacto</p>
+        <h2>Vamos falar sobre<br />a sua recuperação</h2>
+        <div class="divider" style="margin-bottom:1.5rem;"></div>
+        <p>Entre em contacto para agendar uma sessão ou esclarecer qualquer dúvida. Respondo com brevidade.</p>
+
+        <div class="contacto-items">
+
+          <div class="contacto-item">
+            <div class="contacto-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div class="contacto-item-text">
+              <div class="label">Telemóvel</div>
+              <a href="tel:+351913386242" class="value">(+351) 913 386 242</a>
+            </div>
+          </div>
+
+          <div class="contacto-item">
+            <div class="contacto-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="contacto-item-text">
+              <div class="label">Email</div>
+              <a href="mailto:fisiodermato.alexandramartins@gmail.com" class="value">fisiodermato.alexandramartins@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contacto-item">
+            <div class="contacto-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div class="contacto-item-text">
+              <div class="label">Zona de Atendimento</div>
+              <div class="value">Margem Sul · Lisboa · Ao domicílio</div>
+            </div>
+          </div>
+
+          <div class="contacto-item">
+            <div class="contacto-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="contacto-item-text">
+              <div class="label">Instagram</div>
+              <a href="https://www.instagram.com/fisiodermato.alexandramartins" target="_blank" rel="noopener" class="value">@fisiodermato.alexandramartins</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="whatsapp-card">
+        <h3>Marque a sua sessão</h3>
+        <p>A forma mais rápida de agendar é pelo WhatsApp. Respondo em poucas horas.</p>
+
+        <a href="https://wa.me/351913386242?text=Olá%20Alexandra%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços%20e%20marcar%20uma%20sessão."
+           target="_blank" rel="noopener"
+           class="whatsapp-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.524 5.847L0 24l6.335-1.498A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.667-.494-5.204-1.357l-.374-.218-3.86.913.928-3.762-.24-.385A9.944 9.944 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+          </svg>
+          Enviar mensagem
+        </a>
+
+        <br />
+        <a href="mailto:fisiodermato.alexandramartins@gmail.com" class="email-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Enviar email
+        </a>
+
+        <br />
+        <span class="zona-chip">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          </svg>
+          Margem Sul e Lisboa
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo-mao.png" alt="Alexandra Martins" class="footer-logo-mao" />
+        <div class="footer-brand-text">
+          <div class="nome">Alexandra Martins</div>
+          <div class="esp">Fisioterapia Dermatofuncional · Domicílio</div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        © 2026 Alexandra Martins · Margem Sul & Lisboa<br />
+        fisiodermato.alexandramartins@gmail.com
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     FLOATING WHATSAPP
+════════════════════════════════════════════════════════════ -->
+<a href="https://wa.me/351913386242?text=Olá%20Alexandra%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços."
+   target="_blank" rel="noopener"
+   class="wa-float"
+   aria-label="Contactar no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.524 5.847L0 24l6.335-1.498A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.667-.494-5.204-1.357l-.374-.218-3.86.913.928-3.762-.24-.385A9.944 9.944 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+  </svg>
+  <span class="wa-tooltip">Marcar consulta</span>
+</a>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+  /* Nav: scroll effect */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Nav: mobile toggle */
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  /* Fechar menu ao clicar num link */
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  /* Smooth reveal on scroll */
+  const observerOpts = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, observerOpts);
+
+  document.querySelectorAll('.servico-card, .blog-card, .beneficio-item, .sobre-grid, .contacto-grid').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
